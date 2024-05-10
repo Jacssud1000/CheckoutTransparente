@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout Transparente</title>
+    <link rel="stylesheet" type="text/css" href="../css/formulario.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script src="../js/indexCheckoutTransparente.js"></script>
+    <script src="../js/Checkout.js"></script>
+</head>
+<body>
+<div id="wrapper">
+    <section id="one" class="wrapper style2 spotlights">
+        <section>
+            <div class="content">
+                <div class="inner">
+                    <img src="../images/remera-mercado-pago.jpg" alt="Camiseta de Mercado Pago">
+                    <h3 class="titleProduct">Camiseta de Mercado Pago</h3>
+                    <p class="ClothingSize">Clothing size: M</p>
+                    <p class="ClothingBrand">Clothing brand: Mercado Pago</p>
+                    <p class="description">Description: Camisetas Básicas
+                        Slim Fit Masculina 100% Algodão Premium e Manga Curta!</p>
+                    <p class="price">100$</p>
+                    <button class="addToCart">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>
+
+<div id="checkoutBox">
+    <section id="two" class="wrapper style2 spotlights">
+        <section>
+            <div class="content">
+                <div class="inner">
+                    <h3 class="titleProduct">Product:</h3>
+                    <p class="ClothingSize">Clothing size:</p>
+                    <p class="ClothingBrand">Clothing brand:</p>
+                    <p class="description">Description:</p>
+                    <p class="title_price">Price:</p>
+                    <button onclick="CH()">Checkout</button>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>
+
+<form id="form-checkout">
+    <h2>Detalles de la tarjeta</h2>
+    <div id="form-checkout__cardNumber" class="container"></div>
+    <div id="form-checkout__expirationDate" class="container"></div>
+    <div id="form-checkout__securityCode" class="container"></div>
+
+    <h2>Información del titular</h2>
+    <input type="text" id="form-checkout__cardholderName" placeholder="Nombre del titular" />
+    <select id="form-checkout__issuer"></select>
+    <select id="form-checkout__installments"></select>
+    <select id="form-checkout__identificationType"></select>
+    <input type="text" id="form-checkout__identificationNumber" placeholder="Número de identificación" />
+    <input type="email" id="form-checkout__cardholderEmail" placeholder="Correo electrónico del titular" />
+
+    <button type="submit" id="form-checkout__submit">Pagar</button>
+    <progress value="0" class="progress-bar">Cargando...</progress>
+</form>
+</body>
+</html>
