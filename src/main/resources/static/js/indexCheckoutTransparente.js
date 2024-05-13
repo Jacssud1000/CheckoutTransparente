@@ -1,10 +1,10 @@
 import { loadMercadoPago } from "@mercadopago/sdk-js";
 
 await loadMercadoPago();
-const mp = new window.MercadoPago("YOUR_PUBLIC_KEY");
+const mp = new window.MercadoPago("APP_USR-7476b225-c07f-4be5-9f49-9a3a53869e70");
 
 const cardForm = mp.cardForm({
-    amount: "100.5",
+    amount: "100",
     iframe: true,
     form: {
         id: "form-checkout",
@@ -64,7 +64,7 @@ const cardForm = mp.cardForm({
                 identificationType,
             } = cardForm.getCardFormData();
 
-            fetch("/process_payment", {
+            fetch("/payment", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

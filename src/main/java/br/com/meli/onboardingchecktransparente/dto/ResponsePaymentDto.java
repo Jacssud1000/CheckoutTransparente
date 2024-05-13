@@ -8,4 +8,9 @@ public class ResponsePaymentDto {
     private String status;
     private String detail;
 
+    public ResponsePaymentDto(Long id, String status, String detail) {
+        this.id = id;
+        this.detail = status;
+        this.detail = detail;
+    }
 }

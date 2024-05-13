@@ -13,21 +13,21 @@ import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.payment.Payment;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceCardPayment {
-  String uniqueValue = UUID.randomUUID().toString();
-  Map<String, String> customHeaders = new HashMap<>();
-        customHeaders.put("x-idempotency-key", uniqueValue);
-  MPRequestOptions requestOptions = MPRequestOptions.builder()
-      .customHeaders(customHeaders)
-      .build();
 
   public ResponsePaymentDto payment(PaymentDto paymentDto) {
-
     try {
+      Map<String, String> customHeaders = new HashMap<>();
+
+      customHeaders.put("x-idempotency-key", "0d5020ed-1af6-469c-ae06-c3bec19954bb");
+
+      MPRequestOptions requestOptions = MPRequestOptions.builder()
+          .customHeaders(customHeaders)
+          .build();
+
       MercadoPagoConfig.setAccessToken("APP_USR-6370366279349929-050909-2e30b15123f2fa33334414d50e94d7f1-1795901418");
 
       PaymentClient client = new PaymentClient();
@@ -51,14 +51,19 @@ public class ServiceCardPayment {
                       .build())
               .build();
 
-     client.create(paymentCreateRequest, requestOptions);
+      Payment createdPayment = client.create(paymentCreateRequest, requestOptions);
 
+      return new ResponsePaymentDto(
+          createdPayment.getId(),
+          createdPayment.getStatus(),
+          createdPayment.getStatusDetail()
+      );
 
     } catch (MPApiException apiException) {
       System.out.println(apiException.getApiResponse().getContent());
+      return new ResponsePaymentDto(1L, "error", "error");
     } catch (MPException e) {
       throw new RuntimeException(e);
     }
-    return new ResponsePaymentDto();
   }
 }

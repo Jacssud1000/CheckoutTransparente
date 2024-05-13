@@ -17,7 +17,6 @@ addEventListener("DOMContentLoaded", (event) => {
             <p class="ClothingBrand">Clothing brand: ${producto.ClothingBrand}</p>
             <p class="description">Description: ${producto.Description}</p>
             <p class="title_price">Price: ${producto.Price}</p>
-            <button onclick="CH()">Checkout</button>
-        `;
+            <button class="boton">Checkout</button>`;
     });
 });
