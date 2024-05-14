@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/payment")
+@CrossOrigin("http://localhost:63342")
+@RequestMapping("/payments")
 public class ControllerCardPayment {
 
   @Autowired

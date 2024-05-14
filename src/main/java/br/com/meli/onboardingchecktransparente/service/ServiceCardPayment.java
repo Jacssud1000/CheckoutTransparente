@@ -13,6 +13,7 @@ import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.payment.Payment;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,13 +23,14 @@ public class ServiceCardPayment {
     try {
       Map<String, String> customHeaders = new HashMap<>();
 
-      customHeaders.put("x-idempotency-key", "0d5020ed-1af6-469c-ae06-c3bec19954bb");
+      customHeaders.put("x-idempotency-key", UUID.randomUUID().toString());
 
       MPRequestOptions requestOptions = MPRequestOptions.builder()
           .customHeaders(customHeaders)
+          .accessToken("APP_USR-5879859661431869-050816-63fe2574c50c3369bae624b038a5c0c4-1259153998")
           .build();
 
-      MercadoPagoConfig.setAccessToken("APP_USR-6370366279349929-050909-2e30b15123f2fa33334414d50e94d7f1-1795901418");
+      MercadoPagoConfig.setAccessToken("APP_USR-5879859661431869-050816-63fe2574c50c3369bae624b038a5c0c4-1259153998");
 
       PaymentClient client = new PaymentClient();
 

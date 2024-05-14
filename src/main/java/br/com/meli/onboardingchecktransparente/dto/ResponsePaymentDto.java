@@ -10,7 +10,7 @@ public class ResponsePaymentDto {
 
     public ResponsePaymentDto(Long id, String status, String detail) {
         this.id = id;
-        this.detail = status;
+        this.status = status;
         this.detail = detail;
     }
 }

@@ -4,45 +4,44 @@ await loadMercadoPago();
 const mp = new window.MercadoPago("APP_USR-7476b225-c07f-4be5-9f49-9a3a53869e70");
 
 const cardForm = mp.cardForm({
-    amount: "100",
+    amount: 100.5,
     iframe: true,
     form: {
         id: "form-checkout",
-        cardNumber: {
-            id: "form-checkout__cardNumber",
-            placeholder: "Número do cartão",
-        },
-        expirationDate: {
-            id: "form-checkout__expirationDate",
-            placeholder: "MM/YY",
-        },
-        securityCode: {
-            id: "form-checkout__securityCode",
-            placeholder: "Código de segurança",
-        },
         cardholderName: {
             id: "form-checkout__cardholderName",
-            placeholder: "Titular do cartão",
-        },
-        issuer: {
-            id: "form-checkout__issuer",
-            placeholder: "Banco emissor",
-        },
-        installments: {
-            id: "form-checkout__installments",
-            placeholder: "Parcelas",
-        },
-        identificationType: {
-            id: "form-checkout__identificationType",
-            placeholder: "Tipo de documento",
-        },
-        identificationNumber: {
-            id: "form-checkout__identificationNumber",
-            placeholder: "Número do documento",
+            placeholder: "Holder name",
         },
         cardholderEmail: {
             id: "form-checkout__cardholderEmail",
             placeholder: "E-mail",
+        },
+        cardNumber: {
+            id: "form-checkout__cardNumber",
+            placeholder: "Card number",
+        },
+        expirationDate: {
+            id: "form-checkout__expirationDate",
+            placeholder: "MM/YYYY",
+        },
+        securityCode: {
+            id: "form-checkout__securityCode",
+            placeholder: "Security code",
+        },
+        installments: {
+            id: "form-checkout__installments",
+            placeholder: "Installments",
+        },
+        identificationType: {
+            id: "form-checkout__identificationType",
+        },
+        identificationNumber: {
+            id: "form-checkout__identificationNumber",
+            placeholder: "Identification number",
+        },
+        issuer: {
+            id: "form-checkout__issuer",
+            placeholder: "Issuer",
         },
     },
     callbacks: {
@@ -52,6 +51,9 @@ const cardForm = mp.cardForm({
         },
         onSubmit: event => {
             event.preventDefault();
+
+            const cardholderNameInput = document.getElementById('cardholderName');
+            const name = cardholderNameInput.value;
 
             const {
                 paymentMethodId: payment_method_id,
@@ -64,7 +66,7 @@ const cardForm = mp.cardForm({
                 identificationType,
             } = cardForm.getCardFormData();
 
-            fetch("/payment", {
+            fetch("http://localhost:8080/payments", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -77,6 +79,7 @@ const cardForm = mp.cardForm({
                     installments: Number(installments),
                     description: "Descrição do produto",
                     payer: {
+                        name,
                         email,
                         identification: {
                             type: identificationType,
@@ -99,3 +102,4 @@ const cardForm = mp.cardForm({
         }
     },
 });
+

@@ -1,22 +1,45 @@
-addEventListener("DOMContentLoaded", (event) => {
-    document.querySelector("#one > section > div > div > button").addEventListener('click', () => {
-        const productBox = document.querySelector("#checkoutBox .inner");
-        const producto = {
-            ClothingSize: document.querySelector("#one > section > div > div > p.ClothingSize")
-                .innerText.replace("Clothing size: ", ""),
-            ClothingBrand: document.querySelector("#one > section > div > div > p.ClothingBrand")
-                .innerText.replace("Clothing brand: ", ""),
-            Description: document.querySelector("#one > section > div > div > p.description")
-                .innerText.replace("Description: ", ""),
-            Price: document.querySelector("#one > section > div > div > p.price").innerText.replace("$", "")
-        };
+document.addEventListener("DOMContentLoaded", () => {
+    const addToCartBtns = document.querySelectorAll(".add-to-cart");
+    const checkoutBox = document.querySelector(".checkout-box");
 
-        productBox.innerHTML = `
-            <h3 class="titleProduct">Product:</h3>
-            <p class="ClothingSize">Clothing size: ${producto.ClothingSize}</p>
-            <p class="ClothingBrand">Clothing brand: ${producto.ClothingBrand}</p>
-            <p class="description">Description: ${producto.Description}</p>
-            <p class="title_price">Price: ${producto.Price}</p>
-            <button class="boton">Checkout</button>`;
+    addToCartBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Muestra el checkout-box al hacer clic en el botón "Agregar al Carrito"
+            checkoutBox.style.display = "block";
+
+            // Resto del código para agregar los detalles del producto en el checkout
+            const productBox = document.querySelector(".checkout-box .product-details");
+            const product = {
+                Size: btn.parentElement.querySelector(".size").innerText.replace("Talla: ", ""),
+                Brand: btn.parentElement.querySelector(".brand").innerText.replace("Marca: ", ""),
+                Description: btn.parentElement.querySelector(".description").innerText.replace("Descripción: ", ""),
+                Price: btn.parentElement.querySelector(".price").innerText
+            };
+
+            productBox.innerHTML = `
+                <h4 class="title">Producto:</h4>
+                <p class="size">Talla: ${product.Size}</p>
+                <p class="brand">Marca: ${product.Brand}</p>
+                <p class="description">Descripción: ${product.Description}</p>
+                <p class="price">Precio: ${product.Price}</p>`;
+        });
     });
+
+    const formulario = document.querySelector("#form-checkout");
+
+    for (let i = 1; i <= 12; i++) {
+        let option = document.createElement("option");
+        option.value = i;
+        option.innerText = i;
+        formulario.querySelector("#mes").appendChild(option); // Corregido aquí
+    }
+
+    let currentYear = new Date().getFullYear();
+    for (let i = currentYear; i <= currentYear + 8; i++) {
+        let option = document.createElement("option");
+        option.value = i;
+        option.innerText = i;
+        formulario.querySelector("#year").appendChild(option);
+    }
+
 });

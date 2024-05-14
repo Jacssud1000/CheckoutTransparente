@@ -4,102 +4,42 @@
     <meta charset="UTF-8">
     <title>Checkout Transparente</title>
     <link rel="stylesheet" type="text/css" href="../css/index.css">
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
-    <script src="../js/indexCheckoutTransparente.js"></script>
     <script src="../js/Checkout.js"></script>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
 </head>
 <body>
-<div id="wrapper">
-    <section id="one" class="wrapper style2 spotlights">
-        <section>
-            <div class="content">
-                <div class="inner">
-                    <img src="../images/remera-mercado-pago.jpg" alt="Camiseta de Mercado Pago">
-                    <h3 class="titleProduct">Camiseta de Mercado Pago</h3>
-                    <p class="ClothingSize">Clothing size: M</p>
-                    <p class="ClothingBrand">Clothing brand: Mercado Pago</p>
-                    <p class="description">Description: Camisetas Básicas
-                        Slim Fit Masculina 100% Algodão Premium e Manga Curta!</p>
-                    <p class="price">100$</p>
-                    <button class="addToCart">Add to Cart</button>
-                </div>
-            </div>
-        </section>
-    </section>
-</div>
-
-<div id="checkoutBox">
-    <section id="two" class="wrapper style2 spotlights">
-        <section>
-            <div class="content">
-                <div class="inner">
-                    <h3 class="titleProduct">Product:</h3>
-                    <p class="ClothingSize">Clothing size:</p>
-                    <p class="ClothingBrand">Clothing brand:</p>
-                    <p class="description">Description:</p>
-                    <p class="title_price">Price:</p>
-                    <button class="boton">Checkout</button>
-                </div>
-            </div>
-        </section>
-    </section>
-</div>
-
-<section class="payment-form dark">
-    <div class="container__payment">
-        <div class="block-heading">
-            <div class="payment-details">
-                <form id="form-checkout">
-                    <h3 class="title">Buyer Details</h3>
-                    <div class="row">
-                        <div class="form-group col">
-                            <input id="form-checkout__cardholderEmail" name="cardholderEmail" type="email" class="form-control"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-sm-5">
-                            <select id="form-checkout__identificationType" name="identificationType" class="form-control"></select>
-                        </div>
-                        <div class="form-group col-sm-7">
-                            <input id="form-checkout__identificationNumber" name="docNumber" type="text" class="form-control"/>
-                        </div>
-                    </div>
-                    <br>
-                    <h3 class="title">Card Details</h3>
-                    <div class="row">
-                        <div class="form-group col-sm-8">
-                            <input id="form-checkout__cardholderName" name="cardholderName" type="text" class="form-control"/>
-                        </div>
-                        <div class="form-group col-sm-4">
-                            <div class="input-group expiration-date">
-                                <div id="form-checkout__expirationDate" class="form-control h-40"></div>
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-8">
-                            <div id="form-checkout__cardNumber" class="form-control h-40"></div>
-                        </div>
-                        <div class="form-group col-sm-4">
-                            <div id="form-checkout__securityCode" class="form-control h-40"></div>
-                        </div>
-                        <div id="issuerInput" class="form-group col-sm-12 hidden">
-                            <select id="form-checkout__issuer" name="issuer" class="form-control"></select>
-                        </div>
-                        <div class="form-group col-sm-12">
-                            <select id="form-checkout__installments" name="installments" type="text" class="form-control"></select>
-                        </div>
-                        <div class="form-group col-sm-12">
-                            <input type="hidden" id="amount" />
-                            <input type="hidden" id="description" />
-                            <div id="validation-error-messages">
-                            </div>
-                            <br>
-                            <button id="form-checkout__submit" type="submit" class="btn btn-primary btn-block">Pay</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+<img src="../images/logo.jpg" id="logo">
+<div class="wrapper">
+    <!-- Producto -->
+    <div class="product-card">
+        <img src="../images/remera-mercado-pago.jpg" alt="Camiseta de Mercado Pago">
+        <div class="product-details">
+            <h3 class="title">Camiseta de Mercado Pago</h3>
+            <p class="size">Talla: M</p>
+            <p class="brand">Marca: Mercado Pago</p>
+            <p class="description">Descripción: Camisetas Básicas Slim Fit
+                Masculina 100% Algodão Premium y Manga Curta!</p>
+            <p class="price">$100</p>
+            <button class="add-to-cart">Agregar al Carrito</button>
         </div>
     </div>
-</section>
+
+    <!-- Checkout -->
+    <div class="checkout-box">
+        <div class="checkout-details">
+            <h3 class="title">Resumen de Compra</h3>
+            <div class="product-details">
+                <h4 class="title">Producto:</h4>
+                <p class="size">Talla:</p>
+                <p class="brand">Marca:</p>
+                <p class="description">Descripción:</p>
+                <p class="price">Precio:</p>
+            </div>
+            <a href="payment.html">
+                <button class="checkout-button" >Pagar</button>
+            </a>
+        </div>
+    </div>
+</div>
 </body>
 </html>

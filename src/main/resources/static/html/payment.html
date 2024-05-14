@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout Transparente</title>
+  <link rel="stylesheet" type="text/css" href="../css/index.css">
+  <script src="../js/indexCheckoutTransparente.js"></script>
+  <script src="../js/Checkout.js"></script>
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+<body>
+<img src="../images/logo.jpg" id="logo">
+<section class="payment-form">
+  <!-- Formulario de Pago Aquí -->
+  <div class="container">
+    <form id="form-checkout">
+      <h3 class="title">Detalles del Comprador</h3>
+      <div class="input-group">
+        <label for="email">Correo Electrónico:</label>
+        <input id="email" name="email" type="email" required>
+      </div>
+      <div class="input-group">
+        <label for="identificationType">Tipo de Documento:</label>
+        <select id="identificationType" name="identificationType" required>
+          <option value="DNI">CPF</option>
+          <option value="Cedula">RG</option>
+          <option value="Cedula">CNH</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="identificationNumber">Número de Documento:</label>
+        <input id="identificationNumber" name="identificationNumber" type="text" required>
+      </div>
+      <h3 class="title">Detalles de la Tarjeta</h3>
+      <div class="input-group">
+        <label for="cardholderName">Nombre del Titular:</label>
+        <input id="cardholderName" name="cardholderName" type="text" required>
+      </div>
+      <div class="input-group">
+        <label for="cardNumber">Número de Tarjeta:</label>
+        <div id="cardNumber">
+          <input class="cardNumber" name="cardNumber" type="text" required>
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="securityCode">Código de Seguridad:</label>
+        <div id="securityCode">
+          <input class="securityCode" name="securityCode"  type="number" min="1" max="999" step="3" required>
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="expirationDate">Fecha de Expiración:</label>
+        <div id="expirationDate">
+          <select id="mes" class="mes" name="expirationMonth" required>
+            <option value="mes">Mes</option>
+          </select>
+          <select id="year" class="year" name="expirationYear" required>
+            <option value="year">Year</option>
+          </select>
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="installments">Cuotas:</label>
+        <select id="installments" name="installments" required>
+          <option value="1">1 cuota</option>
+          <option value="2">2 cuotas</option>
+          <option value="3">3 cuotas</option>
+        </select>
+      </div>
+      <input type="hidden" id="amount" />
+      <input type="hidden" id="description" />
+      <div id="validation-error-messages"></div>
+      <button id="form-checkout__submit" type="submit">Pagar</button>
+    </form>
+    <progress class="progress-bar" max="100" value="0"></progress>
+  </div>
+</section>
+</body>
+</html>
