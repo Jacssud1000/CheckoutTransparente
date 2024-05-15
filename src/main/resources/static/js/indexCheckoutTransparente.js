@@ -1,10 +1,7 @@
-import { loadMercadoPago } from "@mercadopago/sdk-js";
-
-await loadMercadoPago();
 const mp = new window.MercadoPago("APP_USR-7476b225-c07f-4be5-9f49-9a3a53869e70");
 
 const cardForm = mp.cardForm({
-    amount: 100.5,
+    amount: "100",
     iframe: true,
     form: {
         id: "form-checkout",
@@ -52,7 +49,7 @@ const cardForm = mp.cardForm({
         onSubmit: event => {
             event.preventDefault();
 
-            const cardholderNameInput = document.getElementById('cardholderName');
+            const cardholderNameInput = document.getElementById('form-checkout__cardholderName');
             const name = cardholderNameInput.value;
 
             const {
@@ -66,7 +63,7 @@ const cardForm = mp.cardForm({
                 identificationType,
             } = cardForm.getCardFormData();
 
-            fetch("http://localhost:8080/payments", {
+            fetch("/payments", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -102,4 +99,3 @@ const cardForm = mp.cardForm({
         }
     },
 });
-

@@ -4,10 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     addToCartBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Muestra el checkout-box al hacer clic en el botón "Agregar al Carrito"
+
             checkoutBox.style.display = "block";
 
-            // Resto del código para agregar los detalles del producto en el checkout
             const productBox = document.querySelector(".checkout-box .product-details");
             const product = {
                 Size: btn.parentElement.querySelector(".size").innerText.replace("Talla: ", ""),
@@ -41,5 +40,4 @@ document.addEventListener("DOMContentLoaded", () => {
         option.innerText = i;
         formulario.querySelector("#year").appendChild(option);
     }
-
 });

@@ -4,20 +4,17 @@
   <meta charset="UTF-8">
   <title>Checkout Transparente</title>
   <link rel="stylesheet" type="text/css" href="../css/index.css">
-  <script src="../js/indexCheckoutTransparente.js"></script>
-  <script src="../js/Checkout.js"></script>
-  <script src="https://sdk.mercadopago.com/js/v2"></script>
 </head>
 <body>
-<img src="../images/logo.jpg" id="logo">
+<!--<img src="../images/logo.jpg" id="logo">
 <section class="payment-form">
-  <!-- Formulario de Pago Aquí -->
+  &lt;!&ndash; Formulario de Pago Aquí &ndash;&gt;
   <div class="container">
     <form id="form-checkout">
       <h3 class="title">Detalles del Comprador</h3>
       <div class="input-group">
-        <label for="email">Correo Electrónico:</label>
-        <input id="email" name="email" type="email" required>
+        <label for="cardholderEmail">Correo Electrónico:</label>
+        <input id="cardholderEmail" name="email" type="email" required>
       </div>
       <div class="input-group">
         <label for="identificationType">Tipo de Documento:</label>
@@ -36,6 +33,7 @@
         <label for="cardholderName">Nombre del Titular:</label>
         <input id="cardholderName" name="cardholderName" type="text" required>
       </div>
+      <select id="issuer"></select>
       <div class="input-group">
         <label for="cardNumber">Número de Tarjeta:</label>
         <div id="cardNumber">
@@ -45,7 +43,7 @@
       <div class="input-group">
         <label for="securityCode">Código de Seguridad:</label>
         <div id="securityCode">
-          <input class="securityCode" name="securityCode"  type="number" min="1" max="999" step="3" required>
+          <input class="securityCode" name="securityCode"  type="number" min="1" max="999" required>
         </div>
       </div>
       <div class="input-group">
@@ -74,6 +72,40 @@
     </form>
     <progress class="progress-bar" max="100" value="0"></progress>
   </div>
-</section>
+</section>-->
+
+<style>
+  #form-checkout {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+  }
+
+  .container {
+    height: 18px;
+    display: inline-block;
+    border: 1px solid rgb(118, 118, 118);
+    border-radius: 2px;
+    padding: 1px 2px;
+  }
+</style>
+<form id="form-checkout">
+  <div id="form-checkout__cardNumber" class="container"></div>
+  <div id="form-checkout__expirationDate" class="container"></div>
+  <div id="form-checkout__securityCode" class="container"></div>
+  <input type="text" id="form-checkout__cardholderName" />
+  <select id="form-checkout__issuer"></select>
+  <select id="form-checkout__installments"></select>
+  <select id="form-checkout__identificationType"></select>
+  <input type="text" id="form-checkout__identificationNumber" />
+  <input type="email" id="form-checkout__cardholderEmail" />
+
+  <button type="submit" id="form-checkout__submit">Pagar</button>
+  <progress value="0" class="progress-bar">Carregando...</progress>
+</form>
+
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+<script src="../js/indexCheckoutTransparente.js"></script>
+<script src="../js/Checkout.js"></script>
 </body>
 </html>

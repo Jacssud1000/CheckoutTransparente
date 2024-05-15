@@ -22,7 +22,7 @@ public class ControllerCardPayment {
   private ServiceCardPayment serviceCardPayment;
 
   @PostMapping
-  private ResponseEntity<ResponsePaymentDto> paymentRequest(@RequestBody @Valid PaymentDto paymentDto){
+  public ResponseEntity<ResponsePaymentDto> paymentRequest(@RequestBody @Valid PaymentDto paymentDto){
   ResponsePaymentDto payment = serviceCardPayment.payment(paymentDto);
   return ResponseEntity.status(HttpStatus.OK).body(payment);
   }
