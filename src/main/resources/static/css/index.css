@@ -1,11 +1,13 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: rgb(255, 255, 255);
+    background-color: #f8f9fa;
     margin: 0;
     padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
 }
 
 #logo {
@@ -15,6 +17,14 @@ body {
     z-index: 1;
 }
 
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 800px;
+    width: 100%;
+}
+
 .product-card {
     float: left;
     width: calc(50% - 10px);
@@ -22,40 +32,19 @@ body {
 }
 
 .checkout-box {
-    float: right;
-    width: calc(50% - 10px);
-    margin-left: 20px;
-}
-
-.checkout-box {
     display: none;
 }
 
-
-.wrapper {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1000px;
-}
-
 .product-card, .checkout-box {
-    width: 50%;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.payment-form {
-    width: 40%;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .product-card img {
-    max-width: 75%;
+    max-width: 100%;
     height: auto;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -64,38 +53,27 @@ body {
 .product-details h3, .checkout-details h3 {
     margin-top: 10px;
     color: #333;
+    font-size: 1.2em;
 }
 
 .product-details p {
     margin: 5px 0;
-}
-
-.add-to-cart {
-    margin-top: 5%;
-    margin-left: 30%;
-}
-
-.checkout-button {
-    margin-top: 75%;
-    margin-left: 40%;
+    color: #555;
 }
 
 .add-to-cart, .checkout-button {
+    margin-top: 20px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-}
-
-.add-to-cart, .checkout-button {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 20px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 1em;
 }
 
 .add-to-cart:hover, .checkout-button:hover {
@@ -116,6 +94,7 @@ body {
 .input-group label {
     display: block;
     margin-bottom: 5px;
+    color: #555;
 }
 
 .input-group input, .input-group select {
@@ -123,6 +102,8 @@ body {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
 }
 
 #validation-error-messages {
@@ -133,4 +114,53 @@ body {
 .progress-bar {
     width: 100%;
     margin-top: 10px;
+}
+
+#form-checkout {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 100%;
+}
+
+#form-checkout .container {
+    height: 48px;
+    display: inline-block;
+    border: 1px solid rgb(118, 118, 118);
+    border-radius: 2px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#form-checkout input, #form-checkout select {
+    margin-bottom: 10px;
+    font-size: 1em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#form-checkout__submit {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+}
+
+#form-checkout__submit:hover {
+    background-color: #45a049;
+}
+
+progress.progress-bar {
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #f3f3f3;
 }

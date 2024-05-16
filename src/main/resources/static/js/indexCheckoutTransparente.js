@@ -1,4 +1,4 @@
-const mp = new window.MercadoPago("APP_USR-7476b225-c07f-4be5-9f49-9a3a53869e70");
+const mp = new window.MercadoPago("APP_USR-d30d8d4d-17dc-4e54-bb9a-07df1a90a60d");
 
 const cardForm = mp.cardForm({
     amount: "100",
@@ -54,7 +54,7 @@ const cardForm = mp.cardForm({
 
             const {
                 paymentMethodId: payment_method_id,
-                issuerId: issuer_id,
+                issuerId: issuerId,
                 cardholderEmail: email,
                 amount,
                 token,
@@ -63,19 +63,19 @@ const cardForm = mp.cardForm({
                 identificationType,
             } = cardForm.getCardFormData();
 
-            fetch("/payments", {
+            fetch("http://localhost:8080/payments", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     token,
-                    issuer_id,
+                    issuerId: issuerId,
                     payment_method_id,
-                    transaction_amount: Number(amount),
+                    transactionAmount:  Number(amount),
                     installments: Number(installments),
                     description: "Descrição do produto",
-                    payer: {
+                    payerDto:  {
                         name,
                         email,
                         identification: {
@@ -89,7 +89,6 @@ const cardForm = mp.cardForm({
         onFetching: (resource) => {
             console.log("Fetching resource: ", resource);
 
-            // Animate progress bar
             const progressBar = document.querySelector(".progress-bar");
             progressBar.removeAttribute("value");
 

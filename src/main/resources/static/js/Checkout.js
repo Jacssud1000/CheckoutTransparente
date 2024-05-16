@@ -23,21 +23,4 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p class="price">Precio: ${product.Price}</p>`;
         });
     });
-
-    const formulario = document.querySelector("#form-checkout");
-
-    for (let i = 1; i <= 12; i++) {
-        let option = document.createElement("option");
-        option.value = i;
-        option.innerText = i;
-        formulario.querySelector("#mes").appendChild(option); // Corregido aquí
-    }
-
-    let currentYear = new Date().getFullYear();
-    for (let i = currentYear; i <= currentYear + 8; i++) {
-        let option = document.createElement("option");
-        option.value = i;
-        option.innerText = i;
-        formulario.querySelector("#year").appendChild(option);
-    }
 });
